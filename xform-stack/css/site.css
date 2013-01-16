@@ -1,0 +1,45 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+#main-content {
+  padding: 10px;
+}
+
+#main-canvas {
+  outline: 1px solid #ddd;
+}
+
+#xforms,#xform-stack {
+  min-height: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+#xforms a.remove {
+  display: none;
+}
+
+#xform-stack a.add {
+  display: none;
+}
+
+a.add,a.remove {
+  font-size: 50%;
+}
+
+.xform {
+  background-color: white;
+  width: 320px;
+  height: 36px;
+  line-height: 27px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.xform input {
+  float: right;
+  margin-left: 5px;
+  width: 64px;
+  text-align: center;
+}
