@@ -16,7 +16,13 @@ $(function() {
     render();
   });
 
-  $('#xform-stack').on('sortstop', render);
+  $('#xform-stack').on('sortstop', function(e) {
+    render();
+  });
+
+  $('#draw-intermediate').on('change', function(e) {
+    render();
+  });
 
   var canvas = document.getElementById('main-canvas');
   var ctx = window.dbgctx = canvas.getContext('2d');
@@ -95,6 +101,7 @@ $(function() {
 
   var render = function() {
     console.log("Begin Render");
+    var drawIntermediate = $('#draw-intermediate').is(':checked');
     clearCanvas();
 
     ctx.save();
@@ -109,7 +116,9 @@ $(function() {
       // Need this check for jQuery sortable, sometimes we get the placeholder
       if (xform) {
         transforms[$(this).data('xform')](this);
-        drawModel(0.5);
+        if (drawIntermediate) {
+          drawModel(0.5);
+        }
       }
     });
     drawModel();
