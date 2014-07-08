@@ -1,6 +1,6 @@
 $(function() {
   $('#xforms').on('click', 'a.add', function() {
-    var $xform = $(this).parent('.xform').clone().removeClass('template')
+    var $xform = $(this).parent('.xform').clone().removeClass('template');
     $('input', $xform).prop('disabled', false);
     $('#xform-stack').append($xform);
   });
@@ -26,7 +26,7 @@ $(function() {
 
   var canvas = document.getElementById('main-canvas');
   var ctx = window.dbgctx = canvas.getContext('2d');
-  var canvasWidth = 800;
+  var canvasWidth = 400;
   var canvasHeight = 400;
 
   var transforms = {

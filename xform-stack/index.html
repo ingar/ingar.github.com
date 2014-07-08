@@ -1,11 +1,67 @@
 <html>
 <head>
   <title>The Transformation Stack</title>
-  <link rel="stylesheet" href="css/normalize.css"/>
+  <link rel="stylesheet" href="http://css.cdn.tl/normalize.css"/>
   <link rel="stylesheet" href="css/site.css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
   <script src="script/site.js"></script>
+
+  <style>
+    * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+    #main-content {
+      padding: 10px;
+    }
+
+    #main-canvas {
+      outline: 1px solid #ddd;
+      float: left;
+    }
+
+    #xforms,#xform-stack {
+      float: left;
+    }
+
+    ul,ol {
+      min-height: 10px;
+      width: 320px;
+      list-style: none;
+      padding: 0;
+      float: left;
+    }
+
+    #xforms a.remove {
+      display: none;
+    }
+
+    #xform-stack a.add {
+      display: none;
+    }
+
+    a.add,a.remove {
+      font-size: 50%;
+    }
+
+    .xform {
+      background-color: white;
+      width: 320px;
+      height: 36px;
+      line-height: 27px;
+      padding: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+
+    .xform input {
+      float: right;
+      margin-left: 5px;
+      width: 64px;
+      text-align: center;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -15,37 +71,42 @@
 <div id="main-content">
   <h1>
     Transformations
+    <input id="draw-intermediate" type="checkbox" />
   </h1>
   <canvas id="main-canvas" width="800" height="400"></canvas>
 
-  <h4>Transforms</h4>
-  <ul id="xforms">
-    <li class="xform template" data-xform="translate">
-      Translate
-      <a class="add" href="javascript:void(0)">add</a>
-      <a class="remove" href="javascript:void(0)">remove</a>
-      <input type="text" name="y" placeholder="y" disabled="disabled" />
-      <input type="text" name="x" placeholder="x" disabled="disabled" />
-    </li>
-    <li class="xform template" data-xform="scale">
-      Scale
-      <a class="add" href="javascript:void(0)">add</a>
-      <a class="remove" href="javascript:void(0)">remove</a>
-      <input type="text" name="y" placeholder="y" disabled="disabled" />
-      <input type="text" name="x" placeholder="x" disabled="disabled" />
-    </li>
-    <li class="xform template" data-xform="rotate">
-      Rotate
-      <a class="add" href="javascript:void(0)">add</a>
-      <a class="remove" href="javascript:void(0)">remove</a>
-      <input type="text" name="degrees" placeholder="degrees" disabled="disabled"/>
-    </li>
-  </ul>
+  <div id="xforms">
+    <h4>Transforms</h4>
+    <ul>
+      <li class="xform template" data-xform="translate">
+        Translate
+        <a class="add" href="javascript:void(0)">add</a>
+        <a class="remove" href="javascript:void(0)">remove</a>
+        <input type="text" name="y" placeholder="y" disabled="disabled" />
+        <input type="text" name="x" placeholder="x" disabled="disabled" />
+      </li>
+      <!--<li class="xform template" data-xform="scale">-->
+        <!--Scale-->
+        <!--<a class="add" href="javascript:void(0)">add</a>-->
+        <!--<a class="remove" href="javascript:void(0)">remove</a>-->
+        <!--<input type="text" name="y" placeholder="y" disabled="disabled" />-->
+        <!--<input type="text" name="x" placeholder="x" disabled="disabled" />-->
+      <!--</li>-->
+      <li class="xform template" data-xform="rotate">
+        Rotate
+        <a class="add" href="javascript:void(0)">add</a>
+        <a class="remove" href="javascript:void(0)">remove</a>
+        <input type="text" name="degrees" placeholder="degrees" disabled="disabled"/>
+      </li>
+    </ul>
+  </div>
 
-  <input id="draw-intermediate" type="checkbox" />
-  <h4>Transformation Stack</h4>
-  <ol id="xform-stack"></ol>
-</div>
+  <div id="xform-stack">
+    <h4>Transformation Stack</h4>
+    <ol></ol>
+  </div>
+  </div>
 
+  <script src="xform-stack.js"></script>
 </body>
 </html>
